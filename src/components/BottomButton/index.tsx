@@ -22,6 +22,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontFamily: 'Montserrat-Regular',
     color: colors.flatWhite.light,
+    textTransform: 'uppercase'
   },
 })
 

@@ -4,9 +4,11 @@ import * as Font from 'expo-font'
 import AuthSwitcherNavigator from 'pages/navigation/AuthSwitcherNavigator'
 import Loading from 'pages/Loading'
 import { PinSetupProvider } from 'lib/hooks/usePinSetup'
+import initI18n from 'translations/index';
 
 export default function App() {
   const [isLoadingFonts, setIsLoadingFonts] = useState(true)
+  initI18n()
   useEffect(() => {
     const loadFonts = async () => {
       try {

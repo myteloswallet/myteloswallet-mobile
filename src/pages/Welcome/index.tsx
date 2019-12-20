@@ -8,6 +8,7 @@ import { useNavigation } from 'react-navigation-hooks'
 import colors from 'theme/colors'
 import BottomButton from 'components/BottomButton'
 import { CREATE_PIN } from 'pages/navigation/UnauthenticatedStackNavigator/keys'
+import { useTranslation } from 'react-i18next'
 
 const gradientColors = {
   top: colors.flatPurple.dark,
@@ -52,6 +53,7 @@ const styles = StyleSheet.create({
 })
 
 const Welcome: NavigationScreenComponent<{}, {}> = () => {
+  const { t } = useTranslation('welcome')
   const { navigate } = useNavigation()
   const navigateToAuthenticateScreen = () => {
     navigate(CREATE_PIN)
@@ -73,16 +75,16 @@ const Welcome: NavigationScreenComponent<{}, {}> = () => {
             <Text style={{ fontFamily: 'Montserrat-Regular' }}> Starter</Text>
           </Text>
           <Text style={styles.subtitle}>
-            By{' '}
+            {`${t('welcome:by')} `}
             <Text style={{ fontFamily: 'Montserrat-Bold' }}>
               Telos Dream Stack
             </Text>
           </Text>
           <Text style={styles.slogan}>
-            Explore all the features{'\n'}of the Telos Dream Stack
+            {t('welcome:firstLineText')}
           </Text>
           <BottomButton
-            title="ALRIGHT, LET'S GO"
+            title={t('bottomButtonText')}
             onPress={navigateToAuthenticateScreen}
             disabled={false}
           />
