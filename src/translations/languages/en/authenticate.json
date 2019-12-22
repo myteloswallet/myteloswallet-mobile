@@ -1,0 +1,7 @@
+{
+  "privateKeyCopyText": "You can import your TELOS account, just be sure to use the active private key. This private key will be securely stored on the phone and can be only accessed with the PIN you set up",
+  "textInputPlaceholder": "Paste your Private Key here",
+  "privateKeyLabel": "Private Key",
+  "addPrivateKey": "Add your Private Key",
+  "bottomButtonText": "continue"
+}

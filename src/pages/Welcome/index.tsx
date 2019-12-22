@@ -75,13 +75,13 @@ const Welcome: NavigationScreenComponent<{}, {}> = () => {
             <Text style={{ fontFamily: 'Montserrat-Regular' }}> Starter</Text>
           </Text>
           <Text style={styles.subtitle}>
-            {`${t('welcome:by')} `}
+            {`${t('by')} `}
             <Text style={{ fontFamily: 'Montserrat-Bold' }}>
               Telos Dream Stack
             </Text>
           </Text>
           <Text style={styles.slogan}>
-            {t('welcome:firstLineText')}
+            {t('firstLineText')}
           </Text>
           <BottomButton
             title={t('bottomButtonText')}

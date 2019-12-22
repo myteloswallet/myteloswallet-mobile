@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { SafeAreaView, View, Text, StyleSheet, Alert } from 'react-native'
 import { NavigationScreenComponent } from 'react-navigation'
 import * as Haptics from 'expo-haptics'
+import { useTranslation } from 'react-i18next'
 const VirtualKeyboard = require('react-native-virtual-keyboard')
 
 import { useNavigation } from 'react-navigation-hooks'
@@ -43,9 +44,16 @@ const styles = StyleSheet.create({
 })
 
 const ConfirmPin: NavigationScreenComponent<{}, {}> = () => {
-  const { navigate } = useNavigation()
+  const { navigate, setParams } = useNavigation()
   const { pin, pinConfirmation } = usePinSetup()
   const { setPinConfirmation, hashPin, reset } = usePinSetupActions()
+  
+  const { t } = useTranslation('confirmPin')
+  const title = t('confirmPin')
+  useEffect(()=>{
+    setParams({ title })
+  },
+  [title])
 
   // On view exit, clean up pins
   useEffect(() => {
@@ -71,14 +79,14 @@ const ConfirmPin: NavigationScreenComponent<{}, {}> = () => {
       hashPin(newPin)
       handleCompletion()
     } else if (newPin.length === 6 && pin !== newPin) {
-      Alert.alert('Wrong pin', "The pins you provided don't match")
+      Alert.alert(t('noMatchErrorTitle'), t('noMatchErrorDetail'))
       setPinConfirmation('')
     }
   }
 
   return (
     <SafeAreaView style={styles.viewStyle}>
-      <Text style={styles.title}>Confirm Pin</Text>
+      <Text style={styles.title}>{t('setConfirmationPin')}</Text>
       <View style={styles.dotContainer}>
         <PinDot active={pinConfirmation.length >= 1} />
         <PinDot active={pinConfirmation.length >= 2} />
@@ -99,8 +107,8 @@ const ConfirmPin: NavigationScreenComponent<{}, {}> = () => {
   )
 }
 
-ConfirmPin.navigationOptions = {
-  title: 'Confirm Pin',
-}
+ConfirmPin.navigationOptions = ({ navigation }: { navigation: any }) => ({
+  title: navigation.getParam('title', 'Confirm Pin')
+});
 
 export default ConfirmPin

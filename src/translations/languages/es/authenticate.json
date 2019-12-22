@@ -1,0 +1,7 @@
+{
+  "privateKeyCopyText": "Puedes importar tu cuenta TELOS,  solamente asegúrate de usar la llave privada activa. Esta llave va a ser almacenada de forma segura en el teléfono y sólo podrá ser accedida con el PIN que configures.",
+  "textInputPlaceholder": "Ingrese su llave privada aquí",
+  "privateKeyLabel": "Llave privada",
+  "addPrivateKey": "Agregue su llave privada",
+  "bottomButtonText": "continuar"
+}

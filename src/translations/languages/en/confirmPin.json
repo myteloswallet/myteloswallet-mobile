@@ -1,0 +1,6 @@
+{
+  "confirmPin": "Confirm Pin",
+  "setConfirmationPin": "Confirm Pin",
+  "noMatchErrorTitle": "Wrong pin",
+  "noMatchErrorDetail": "The pins you provided don't match"
+}

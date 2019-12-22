@@ -2,6 +2,7 @@ import React, { useEffect, useCallback } from 'react'
 import { ActivityIndicator, Text, View, StyleSheet } from 'react-native'
 import { useNavigation } from 'react-navigation-hooks'
 import * as SecureStore from 'expo-secure-store'
+import { useTranslation } from 'react-i18next'
 
 import { PRIVATE_KEY } from 'lib/keys/secureStore'
 import {
@@ -19,6 +20,7 @@ const authLoadingStyles = StyleSheet.create({
 
 const AuthLoading: React.FC = () => {
   const { navigate } = useNavigation()
+  const { t } = useTranslation('authLoading')
 
   const performInitialLoad = useCallback(async () => {
     const privateKey = await SecureStore.getItemAsync(PRIVATE_KEY)
@@ -36,7 +38,7 @@ const AuthLoading: React.FC = () => {
   return (
     <View style={authLoadingStyles.container}>
       <ActivityIndicator size="large" />
-      <Text>Loading</Text>
+        <Text>{t('loading')}</Text>
     </View>
   )
 }
