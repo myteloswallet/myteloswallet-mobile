@@ -15,9 +15,9 @@
 	</a>
 </p>
 
-# TELOS Mobile dApp Stater
+# DreamStack Mobile dApp Stater
 
-Cross platform React Native dApp starter.
+React Native dApp starter. 
 
 <p align="center">
 <img src="https://user-images.githubusercontent.com/6248571/70386194-53182b80-195c-11ea-9752-63a1866257fc.gif" height="400">
