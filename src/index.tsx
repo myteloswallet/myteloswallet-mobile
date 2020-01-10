@@ -1,36 +1,41 @@
-import React, { useEffect, useState } from 'react'
-import * as Font from 'expo-font'
+import React from 'react'
+import { NavigationNativeContainer } from '@react-navigation/native'
+import { createStackNavigator } from '@react-navigation/stack'
 
-import AuthSwitcherNavigator from 'pages/navigation/AuthSwitcherNavigator'
+import { PinSetupProvider } from 'hooks/usePinSetup'
+import useFontLoad from 'hooks/useFontLoad'
+import useAuthCheck from 'hooks/useAuthCheck'
+import useLoadTranslation from 'hooks/useLoadTranslation'
+
 import Loading from 'pages/Loading'
-import { PinSetupProvider } from 'lib/hooks/usePinSetup'
-import initI18n from 'translations/index';
+import Home from 'pages/Home'
+import Welcome from 'pages/Welcome'
+
+const Stack = createStackNavigator()
 
 export default function App() {
-  const [isLoadingFonts, setIsLoadingFonts] = useState(true)
-  initI18n()
-  useEffect(() => {
-    const loadFonts = async () => {
-      try {
-        await Font.loadAsync({
-          'Montserrat-Thin': require('assets/fonts/Montserrat/Montserrat-Thin.ttf'),
-          'Montserrat-Regular': require('assets/fonts/Montserrat/Montserrat-Regular.ttf'),
-          'Montserrat-Bold': require('assets/fonts/Montserrat/Montserrat-Bold.ttf'),
-          'Montserrat-Black': require('assets/fonts/Montserrat/Montserrat-Black.ttf'),
-        })
-      } catch (error) {
-        console.error(error) // eslint-disable-line no-console
-      } finally {
-        setIsLoadingFonts(false)
-      }
-    }
-    loadFonts()
-  }, [])
-  return isLoadingFonts ? (
-    <Loading />
-  ) : (
+  const [loadingFonts] = useFontLoad()
+  const [loadingAuth, isAuthenticated] = useAuthCheck()
+  const [loadingTranslations] = useLoadTranslation()
+  const loading = loadingFonts || loadingAuth || loadingTranslations
+  const renderStackNavigatorContents = (
+    isLoading: boolean,
+    isAuth: boolean,
+  ) => {
+    if (isLoading) return <Stack.Screen name="Loading" component={Loading} />
+    return isAuth ? (
+      <Stack.Screen name="Home" component={Home} />
+    ) : (
+      <Stack.Screen name="Welcome" component={Welcome} />
+    )
+  }
+  return (
     <PinSetupProvider>
-      <AuthSwitcherNavigator />
+      <NavigationNativeContainer>
+        <Stack.Navigator>
+          {renderStackNavigatorContents(loading, isAuthenticated)}
+        </Stack.Navigator>
+      </NavigationNativeContainer>
     </PinSetupProvider>
   )
 }

@@ -15,7 +15,7 @@ export default function Loading() {
   return (
     <View style={loadingStyles.container}>
       <ActivityIndicator size="large" />
-        <Text>{t('loadingText')}</Text>
+      <Text>{t('loadingText')}</Text>
     </View>
   )
 }

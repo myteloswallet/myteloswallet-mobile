@@ -1,14 +1,10 @@
 import React, { useEffect } from 'react'
 import { SafeAreaView, View, Text, StyleSheet, Alert } from 'react-native'
-import { NavigationScreenComponent } from 'react-navigation'
 import * as Haptics from 'expo-haptics'
 import { useTranslation } from 'react-i18next'
-const VirtualKeyboard = require('react-native-virtual-keyboard')
-
-import { useNavigation } from 'react-navigation-hooks'
+import VirtualKeyboard from 'react-native-virtual-keyboard'
 import PinDot from 'components/PinDot'
-import { usePinSetup, usePinSetupActions } from 'lib/hooks/usePinSetup'
-import { AUTHENTICATE } from 'pages/navigation/UnauthenticatedStackNavigator/keys'
+import { usePinSetup, usePinSetupActions } from 'hooks/usePinSetup'
 
 const styles = StyleSheet.create({
   viewStyle: {
@@ -43,17 +39,10 @@ const styles = StyleSheet.create({
   },
 })
 
-const ConfirmPin: NavigationScreenComponent<{}, {}> = () => {
-  const { navigate, setParams } = useNavigation()
+const ConfirmPin = () => {
   const { pin, pinConfirmation } = usePinSetup()
   const { setPinConfirmation, hashPin, reset } = usePinSetupActions()
-  
   const { t } = useTranslation('confirmPin')
-  const title = t('confirmPin')
-  useEffect(()=>{
-    setParams({ title })
-  },
-  [title])
 
   // On view exit, clean up pins
   useEffect(() => {
@@ -63,7 +52,7 @@ const ConfirmPin: NavigationScreenComponent<{}, {}> = () => {
   }, [reset])
 
   const handleCompletion = () => {
-    navigate(AUTHENTICATE)
+    // navigate(AUTHENTICATE)
   }
 
   const handleVirtualKeyboard = (val: string) => {
@@ -106,9 +95,5 @@ const ConfirmPin: NavigationScreenComponent<{}, {}> = () => {
     </SafeAreaView>
   )
 }
-
-ConfirmPin.navigationOptions = ({ navigation }: { navigation: any }) => ({
-  title: navigation.getParam('title', 'Confirm Pin')
-});
 
 export default ConfirmPin
