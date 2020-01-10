@@ -17,7 +17,7 @@
 
 # TELOS Mobile dApp Stater
 
-Cross platform React Native dApp starter. 
+Cross platform React Native dApp starter.
 
 <p align="center">
 <img src="https://user-images.githubusercontent.com/6248571/70386194-53182b80-195c-11ea-9752-63a1866257fc.gif" height="400">
@@ -43,7 +43,7 @@ read more [expo.io](https://expo.io)
 
 ## Disclaimer
 
-This is a work in progress. Feel free to reach us out on telegram for clarifications. 
+This is a work in progress. Feel free to reach us out on telegram for clarifications.
 https://t.me/telosdreamstack
 
 ## Features
@@ -53,25 +53,23 @@ https://t.me/telosdreamstack
 - [ ] Basic demo page. Read data example and docs.
 - [ ] Push notifications example and docs.
 - [ ] Push transaction example.
-- [ ] Key management thru Expo Secure Store.
+- [x] Key management thru Expo Secure Store.
 - [ ] Deployment guidelines.
-- [ ] Emotion Native
+- [x] Emotion Native
 - [x] Functional TypeScript.
 - [x] Blockmatic code conventions. ( functional, declarative, hooks )
 - [x] Pre-commit code quality git hooks with husky, prettier and eslint.
 - [x] CSS-in-JS styling based on design system constraints with Theme UI.
-- [ ] Multilanguage (i18n) with i18next.
-- [ ] Non relative (absolute) imports.
+- [x] Multilanguage (i18n) with i18next.
+- [x] Non relative (absolute) imports.
 - [ ] Component Error Boundaries.
 - [ ] Hot code reloading.
 - [ ] Automatic testing with Jest.
 - ...
 
-
 ## dApp Architecture
 
 ...
-
 
 ## File Structure
 
@@ -104,7 +102,6 @@ src
 ## Testing
 
 ...
-
 
 ## TELOS DreamStack
 
@@ -155,16 +152,15 @@ Blockmatic is building robust ecosystem of people and tools for development of d
 
 <!-- icons with padding -->
 
-[1.1]: http://i.imgur.com/tXSoThF.png (twitter icon with padding)
-[2.1]: http://i.imgur.com/P3YfQoD.png (facebook icon with padding)
-[3.1]: http://i.imgur.com/0o48UoR.png (github icon with padding)
+[1.1]: http://i.imgur.com/tXSoThF.png 'twitter icon with padding'
+[2.1]: http://i.imgur.com/P3YfQoD.png 'facebook icon with padding'
+[3.1]: http://i.imgur.com/0o48UoR.png 'github icon with padding'
 
 <!-- icons without padding -->
 
-[1.2]: http://i.imgur.com/wWzX9uB.png (twitter icon without padding)
-[2.2]: http://i.imgur.com/fep1WsG.png (facebook icon without padding)
-[3.2]: http://i.imgur.com/9I6NRUm.png (github icon without padding)
-
+[1.2]: http://i.imgur.com/wWzX9uB.png 'twitter icon without padding'
+[2.2]: http://i.imgur.com/fep1WsG.png 'facebook icon without padding'
+[3.2]: http://i.imgur.com/9I6NRUm.png 'github icon without padding'
 
 <!-- links to your social media accounts -->
 <!-- update these accordingly -->
