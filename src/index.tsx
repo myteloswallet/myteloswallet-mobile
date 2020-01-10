@@ -1,36 +1,87 @@
-import React, { useEffect, useState } from 'react'
-import * as Font from 'expo-font'
+import React from 'react'
+import { NavigationNativeContainer } from '@react-navigation/native'
+import { createStackNavigator } from '@react-navigation/stack'
 
-import AuthSwitcherNavigator from 'pages/navigation/AuthSwitcherNavigator'
+import { PinSetupProvider } from 'hooks/usePinSetup'
+import useFontLoad from 'hooks/useFontLoad'
+import useAuthCheck from 'hooks/useAuthCheck'
+import useLoadTranslation from 'hooks/useLoadTranslation'
+
 import Loading from 'pages/Loading'
-import { PinSetupProvider } from 'lib/hooks/usePinSetup'
-import initI18n from 'translations/index';
+import Home from 'pages/Home'
+import Welcome from 'pages/Welcome'
+import CreatePin from 'pages/CreatePin'
+import ConfirmPin from 'pages/ConfirmPin'
+import { useTranslation } from 'react-i18next'
+import Authenticate from 'pages/Authenticate'
+
+const LoadingStack = createStackNavigator()
+const Stack = createStackNavigator()
+
+function LoadedNavigator({ isAuthenticated }: { isAuthenticated: boolean }) {
+  const { t } = useTranslation('pages')
+  return (
+    <Stack.Navigator>
+      {isAuthenticated ? (
+        <Stack.Screen name="Home" component={Home} />
+      ) : (
+        <>
+          <Stack.Screen
+            name="Welcome"
+            component={Welcome}
+            options={{
+              header: () => null,
+            }}
+          />
+          <Stack.Screen
+            name="CreatePin"
+            component={CreatePin}
+            options={{
+              title: t('createPin'),
+            }}
+          />
+          <Stack.Screen
+            name="ConfirmPin"
+            component={ConfirmPin}
+            options={{
+              title: t('createPin'),
+            }}
+          />
+          <Stack.Screen
+            name="Authenticate"
+            component={Authenticate}
+            options={{
+              title: t('authenticate'),
+            }}
+          />
+        </>
+      )}
+    </Stack.Navigator>
+  )
+}
 
 export default function App() {
-  const [isLoadingFonts, setIsLoadingFonts] = useState(true)
-  initI18n()
-  useEffect(() => {
-    const loadFonts = async () => {
-      try {
-        await Font.loadAsync({
-          'Montserrat-Thin': require('assets/fonts/Montserrat/Montserrat-Thin.ttf'),
-          'Montserrat-Regular': require('assets/fonts/Montserrat/Montserrat-Regular.ttf'),
-          'Montserrat-Bold': require('assets/fonts/Montserrat/Montserrat-Bold.ttf'),
-          'Montserrat-Black': require('assets/fonts/Montserrat/Montserrat-Black.ttf'),
-        })
-      } catch (error) {
-        console.error(error) // eslint-disable-line no-console
-      } finally {
-        setIsLoadingFonts(false)
-      }
-    }
-    loadFonts()
-  }, [])
-  return isLoadingFonts ? (
-    <Loading />
-  ) : (
+  const [loadingFonts] = useFontLoad()
+  const [loadingAuth, isAuthenticated] = useAuthCheck()
+  const [loadingTranslations] = useLoadTranslation()
+  const loading = loadingFonts || loadingAuth || loadingTranslations
+  return (
     <PinSetupProvider>
-      <AuthSwitcherNavigator />
+      <NavigationNativeContainer>
+        {loading ? (
+          <LoadingStack.Navigator>
+            <LoadingStack.Screen
+              name="Loading"
+              component={Loading}
+              options={{
+                header: () => null,
+              }}
+            />
+          </LoadingStack.Navigator>
+        ) : (
+          <LoadedNavigator isAuthenticated={isAuthenticated} />
+        )}
+      </NavigationNativeContainer>
     </PinSetupProvider>
   )
 }

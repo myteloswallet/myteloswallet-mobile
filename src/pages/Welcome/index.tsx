@@ -1,14 +1,11 @@
-/* eslint-disable global-require */
 import React from 'react'
-import { NavigationScreenComponent } from 'react-navigation'
 import { StyleSheet, Text, Image, SafeAreaView } from 'react-native'
 import { LinearGradient } from 'expo-linear-gradient'
-import { useNavigation } from 'react-navigation-hooks'
+import { useTranslation } from 'react-i18next'
 
 import colors from 'theme/colors'
 import BottomButton from 'components/BottomButton'
-import { CREATE_PIN } from 'pages/navigation/UnauthenticatedStackNavigator/keys'
-import { useTranslation } from 'react-i18next'
+import { StackNavigationProp } from '@react-navigation/stack'
 
 const gradientColors = {
   top: colors.flatPurple.dark,
@@ -52,12 +49,8 @@ const styles = StyleSheet.create({
   },
 })
 
-const Welcome: NavigationScreenComponent<{}, {}> = () => {
+const Welcome = ({ navigation }: { navigation: StackNavigationProp<any> }) => {
   const { t } = useTranslation('welcome')
-  const { navigate } = useNavigation()
-  const navigateToAuthenticateScreen = () => {
-    navigate(CREATE_PIN)
-  }
   return (
     <>
       <LinearGradient
@@ -80,22 +73,18 @@ const Welcome: NavigationScreenComponent<{}, {}> = () => {
               Telos Dream Stack
             </Text>
           </Text>
-          <Text style={styles.slogan}>
-            {t('firstLineText')}
-          </Text>
+          <Text style={styles.slogan}>{t('firstLineText')}</Text>
           <BottomButton
             title={t('bottomButtonText')}
-            onPress={navigateToAuthenticateScreen}
+            onPress={() => {
+              navigation.push('CreatePin')
+            }}
             disabled={false}
           />
         </SafeAreaView>
       </LinearGradient>
     </>
   )
-}
-
-Welcome.navigationOptions = {
-  header: null,
 }
 
 export default Welcome

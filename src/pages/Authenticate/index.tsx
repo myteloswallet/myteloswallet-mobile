@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react'
-import { NavigationScreenComponent } from 'react-navigation'
+import React, { useState } from 'react'
 import {
   KeyboardAvoidingView,
   ActivityIndicator,
@@ -8,11 +7,10 @@ import {
   TextInput,
 } from 'react-native'
 import { useTranslation } from 'react-i18next'
-import { useNavigation } from 'react-navigation-hooks'
 
 import colors from 'theme/colors'
 
-import useRegisterForPushNotifications from 'lib/hooks/useRegisterForPushNotifications'
+import useRegisterForPushNotifications from 'hooks/useRegisterForPushNotifications'
 import Separator from 'components/Separator'
 import BottomButton from 'components/BottomButton'
 import { SingleChildOrString } from 'types'
@@ -59,7 +57,7 @@ const PrivateKeyMessage = ({ children }: SingleChildOrString) => {
   )
 }
 
-const Authenticate: NavigationScreenComponent<{}, {}> = () => {
+const Authenticate = () => {
   const [privateKey, setPrivateKey] = useState('')
   const [
     register,
@@ -71,14 +69,7 @@ const Authenticate: NavigationScreenComponent<{}, {}> = () => {
     setPrivateKey(enteredText)
   }
 
-  
   const { t } = useTranslation('authenticate')
-  const { setParams } = useNavigation()
-  const title = t('addPrivateKey')
-  useEffect(() => {
-    setParams({ title: t('addPrivateKey') })
-  },
-  [title])
 
   const handleContinueButtonPress = () => {
     // TODO: Validate PK
@@ -119,9 +110,5 @@ const Authenticate: NavigationScreenComponent<{}, {}> = () => {
     </>
   )
 }
-
-Authenticate.navigationOptions = ({ navigation }: { navigation: any }) => ({
-  title: navigation.getParam('title', 'Add your Private Key')
-});
 
 export default Authenticate

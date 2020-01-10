@@ -1,6 +1,5 @@
 import React from 'react'
-import { View, ActivityIndicator, Text, StyleSheet } from 'react-native'
-import { useTranslation } from 'react-i18next'
+import { View, ActivityIndicator, StyleSheet } from 'react-native'
 
 const loadingStyles = StyleSheet.create({
   container: {
@@ -11,11 +10,9 @@ const loadingStyles = StyleSheet.create({
 })
 
 export default function Loading() {
-  const { t } = useTranslation('loading')
   return (
     <View style={loadingStyles.container}>
       <ActivityIndicator size="large" />
-        <Text>{t('loadingText')}</Text>
     </View>
   )
 }
