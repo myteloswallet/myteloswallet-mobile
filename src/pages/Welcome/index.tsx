@@ -1,10 +1,11 @@
-/* eslint-disable global-require */
 import React from 'react'
 import { StyleSheet, Text, Image, SafeAreaView } from 'react-native'
 import { LinearGradient } from 'expo-linear-gradient'
+import { useTranslation } from 'react-i18next'
+
 import colors from 'theme/colors'
 import BottomButton from 'components/BottomButton'
-import { useTranslation } from 'react-i18next'
+import { StackNavigationProp } from '@react-navigation/stack'
 
 const gradientColors = {
   top: colors.flatPurple.dark,
@@ -48,7 +49,7 @@ const styles = StyleSheet.create({
   },
 })
 
-const Welcome = () => {
+const Welcome = ({ navigation }: { navigation: StackNavigationProp<any> }) => {
   const { t } = useTranslation('welcome')
   return (
     <>
@@ -75,7 +76,9 @@ const Welcome = () => {
           <Text style={styles.slogan}>{t('firstLineText')}</Text>
           <BottomButton
             title={t('bottomButtonText')}
-            onPress={() => {}}
+            onPress={() => {
+              navigation.push('CreatePin')
+            }}
             disabled={false}
           />
         </SafeAreaView>

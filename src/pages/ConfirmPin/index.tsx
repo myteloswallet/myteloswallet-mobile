@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next'
 import VirtualKeyboard from 'react-native-virtual-keyboard'
 import PinDot from 'components/PinDot'
 import { usePinSetup, usePinSetupActions } from 'hooks/usePinSetup'
+import { StackNavigationProp } from '@react-navigation/stack'
 
 const styles = StyleSheet.create({
   viewStyle: {
@@ -39,7 +40,11 @@ const styles = StyleSheet.create({
   },
 })
 
-const ConfirmPin = () => {
+const ConfirmPin = ({
+  navigation,
+}: {
+  navigation: StackNavigationProp<any>
+}) => {
   const { pin, pinConfirmation } = usePinSetup()
   const { setPinConfirmation, hashPin, reset } = usePinSetupActions()
   const { t } = useTranslation('confirmPin')
@@ -52,7 +57,7 @@ const ConfirmPin = () => {
   }, [reset])
 
   const handleCompletion = () => {
-    // navigate(AUTHENTICATE)
+    navigation.navigate('Authenticate')
   }
 
   const handleVirtualKeyboard = (val: string) => {

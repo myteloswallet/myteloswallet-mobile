@@ -4,8 +4,8 @@ import * as Haptics from 'expo-haptics'
 import PinDot from 'components/PinDot'
 const VirtualKeyboard = require('react-native-virtual-keyboard')
 import { useTranslation } from 'react-i18next'
-
 import { usePinSetup, usePinSetupActions } from 'hooks/usePinSetup'
+import { StackNavigationProp } from '@react-navigation/stack'
 
 const styles = StyleSheet.create({
   viewStyle: {
@@ -40,15 +40,17 @@ const styles = StyleSheet.create({
   },
 })
 
-const CreatePin = () => {
+const CreatePin = ({
+  navigation,
+}: {
+  navigation: StackNavigationProp<any>
+}) => {
   const { pin } = usePinSetup()
   const { setPin } = usePinSetupActions()
   const { t } = useTranslation('pin')
-
   const handleCompletion = () => {
-    // navigate(CONFIRM_PIN)
+    navigation.navigate('ConfirmPin')
   }
-
   const handleVirtualKeyboard = (val: string) => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light)
     let newPin = pin

@@ -9,9 +9,9 @@ export default function useAuthCheck(): [boolean, any] {
     setIsCheckingLoginStatus(true)
     const privateKey = await SecureStore.getItemAsync(PRIVATE_KEY)
     if (privateKey) {
-      setIsLoggedIn(false)
-    } else {
       setIsLoggedIn(true)
+    } else {
+      setIsLoggedIn(false)
     }
     setIsCheckingLoginStatus(false)
   }

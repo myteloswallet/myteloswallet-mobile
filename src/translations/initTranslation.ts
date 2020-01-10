@@ -7,6 +7,7 @@ import es from 'translations/languages/es'
 
 export default () => {
   const locale = Localization?.locale?.split('-')[0]
+
   return i18n.use(initReactI18next).init({
     resources: { en, es },
     lng: locale,

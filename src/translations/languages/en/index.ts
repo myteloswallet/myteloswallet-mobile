@@ -5,6 +5,7 @@ import authenticate from 'translations/languages/en/authenticate.json'
 import authLoading from 'translations/languages/en/authLoading.json'
 import home from 'translations/languages/en/home.json'
 import loading from 'translations/languages/en/loading.json'
+import pages from 'translations/languages/en/pages.json'
 
 export default {
   pin,
@@ -12,5 +13,7 @@ export default {
   confirmPin,
   authenticate,
   authLoading,
-  home
+  home,
+  loading,
+  pages,
 }
