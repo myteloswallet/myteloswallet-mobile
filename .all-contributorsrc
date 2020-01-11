@@ -38,6 +38,17 @@
       "contributions": [
         "ideas"
       ]
+    },
+    {
+      "login": "lalrg",
+      "name": "Luis Richmond",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/9158083?v=4",
+      "profile": "https://github.com/lalrg",
+      "contributions": [
+        "code",
+        "ideas",
+        "review"
+      ]
     }
   ],
   "contributorsPerLine": 7
