@@ -13,29 +13,30 @@ interface BottomButtonProps {
   onPress?: (event: GestureResponderEvent) => void
 }
 
+const TouchableOpacity = styled.TouchableOpacity({
+  position: 'absolute',
+  bottom: 0,
+  height: 64,
+  width: '101%',
+  flex: 1,
+  alignContent: 'center',
+  justifyContent: 'center',
+})
+
+const Text = styled.Text({
+  textAlign: 'center',
+  fontFamily: 'Montserrat-Regular',
+  textTransform: 'uppercase'
+  },
+  (props:any) => ({ color: props.theme.colors.flatWhite.light })
+)
+
 const BottomButton: React.FC<BottomButtonProps> = ({
   title,
   onPress,
   disabled = false,
 }) => {
   const { colors } = useTheme()
-  
-  const TouchableOpacity = styled.TouchableOpacity({
-    position: 'absolute',
-    bottom: 0,
-    height: 64,
-    width: '101%',
-    flex: 1,
-    alignContent: 'center',
-    justifyContent: 'center',
-  })
-
-  const Text = styled.Text({
-    textAlign: 'center',
-    fontFamily: 'Montserrat-Regular',
-    color: colors.flatWhite.light,
-    textTransform: 'uppercase'
-  })
 
   return (
     <TouchableOpacity

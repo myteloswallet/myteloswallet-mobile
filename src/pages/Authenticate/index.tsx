@@ -37,6 +37,17 @@ const PrivateKeyMessage = ({ children }: SingleChildOrString) => {
   )
 }
 
+const PrivateKeyInput = styled.TextInput({
+  width: '100%',
+  height: 50,
+  fontFamily: 'Montserrat-Regular',
+  paddingHorizontal: 20,
+  },
+  (props: any) => ({
+    color: props.theme.colors.flatBlack.dark,
+    backgroundColor: props.theme.colors.flatWhite.light,
+  }))
+
 const Authenticate = () => {
   const [privateKey, setPrivateKey] = useState('')
   const { colors } : any = useTheme()
@@ -51,6 +62,11 @@ const Authenticate = () => {
     setPrivateKey(enteredText)
   }
 
+  const Caption = styled.Text({
+    fontFamily: 'Montserrat-Regular',
+    color: colors.flatBlack.light,
+  })
+
   const { t } = useTranslation('authenticate')
 
   const handleContinueButtonPress = () => {
@@ -60,24 +76,6 @@ const Authenticate = () => {
     // register()
   }
 
-  const PrivateKeyInput = styled.TextInput({
-    color: colors.flatBlack.dark,
-    backgroundColor: colors.flatWhite.light,
-    width: '100%',
-    height: 50,
-    fontFamily: 'Montserrat-Regular',
-    paddingHorizontal: 20,
-  })
-
-  const Caption = styled.Text({
-    fontFamily: 'Montserrat-Regular',
-    color: colors.flatBlack.light,
-  })
-  
-    const PrivateKeyCopy = ({ children }: SingleChildOrString) => {
-      return <Caption>{children}</Caption>
-    }
-
   const PrivateKeyTextInput = (
     <PrivateKeyInput
       editable={!isRegistering}
@@ -86,6 +84,10 @@ const Authenticate = () => {
       onChangeText={privateKeyInputHandler}
     />
   )
+  
+  const PrivateKeyCopy = ({ children }: SingleChildOrString) => {
+    return <Caption>{children}</Caption>
+  }
 
   return (
     <>

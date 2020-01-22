@@ -41,19 +41,20 @@ const Slogan = styled.Text({
   marginTop: 48,
 })
 
+const StyledLinearGradient = styled(LinearGradient)({
+  width: '100%',
+  height: '100%',
+  flex: 1,
+  alignItems: 'center',
+  justifyContent: 'center',
+})
+
 const Welcome = ({ navigation }: { navigation: StackNavigationProp<any> }) => {
   const theme : any = useTheme()
   const gradientColors = {
     top: theme.colors.flatPurple.dark,
     bottom: theme.colors.flatMagenta.light,
   }
-  const StyledLinearGradient = styled(LinearGradient)({
-    width: '100%',
-    height: '100%',
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  })
 
   const { t } = useTranslation('welcome')
   return (
