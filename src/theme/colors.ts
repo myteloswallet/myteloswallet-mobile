@@ -1,3 +1,5 @@
+import { FlatColors } from './types'
+
 export default {
   flatRed: {
     light: '#E74C3C',
@@ -95,4 +97,4 @@ export default {
     light: '#5064A1',
     dark: '#394C80',
   },
-}
+} as FlatColors

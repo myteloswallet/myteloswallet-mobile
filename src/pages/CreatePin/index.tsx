@@ -1,31 +1,27 @@
 import React from 'react'
 import * as Haptics from 'expo-haptics'
-import PinDot from 'components/PinDot'
 const VirtualKeyboard = require('react-native-virtual-keyboard')
 import { useTranslation } from 'react-i18next'
-import { usePinSetup, usePinSetupActions } from 'hooks/usePinSetup'
 import { StackNavigationProp } from '@react-navigation/stack'
-// @ts-ignore
 import styled from '@emotion/native'
 
-const SafeArea = styled.SafeAreaView({
-  flex: 1,
-  alignItems: 'center',
-})
+import { usePinSetup, usePinSetupActions } from 'hooks/usePinSetup'
 
-const Title = styled.Text({
-  fontFamily: 'Montserrat-Regular',
-  fontSize: 32,
-  marginTop: 32,
-})
+import PinDot from 'components/PinDot'
+import DotContainer from 'components/PinDot/DotContainer'
+import SafeArea from 'components/SafeArea'
 
-const DotContainer = styled.View({
-  display: 'flex',
-  flexDirection: 'row',
-  justifyContent: 'space-evenly',
-  width: 250,
-  marginTop: 32,
-})
+import { EmotionComponentProps } from 'types'
+
+const Title = styled.Text<EmotionComponentProps>(
+  {
+    fontSize: 32,
+    marginTop: 32,
+  },
+  ({ theme }) => ({
+    fontFamily: theme.fonts.sansSerif.regular,
+  }),
+)
 
 const VirtualKeyBoardContainer = styled.View({
   width: '100%',

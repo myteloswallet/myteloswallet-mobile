@@ -1,13 +1,15 @@
 import React from 'react'
-import { Text } from 'react-native'
 import { LinearGradient } from 'expo-linear-gradient'
 import { useTranslation } from 'react-i18next'
-// @ts-ignore
 import styled from '@emotion/native'
-import { useTheme } from 'emotion-theming'
+import { useTheme } from '@emotion/react'
 
 import BottomButton from 'components/BottomButton'
 import { StackNavigationProp } from '@react-navigation/stack'
+import { Theme } from 'theme/types'
+import TextBold from 'components/TextBold'
+import TextRegular from 'components/TextRegular'
+import { EmotionComponentProps } from 'types'
 
 const SafeArea = styled.SafeAreaView({
   flex: 1,
@@ -33,15 +35,19 @@ const Subtitle = styled.Text({
   marginTop: 8,
 })
 
-const Slogan = styled.Text({
-  fontFamily: 'Montserrat-Regular',
-  textAlign: 'center',
-  fontSize: 16,
-  color: '#fff',
-  marginTop: 48,
-})
+const Slogan = styled.Text<EmotionComponentProps>(
+  {
+    textAlign: 'center',
+    fontSize: 16,
+    color: '#fff',
+    marginTop: 48,
+  },
+  ({ theme }) => ({
+    fontFamily: theme.fonts.sansSerif.regular,
+  }),
+)
 
-const StyledLinearGradient = styled(LinearGradient)({
+const StyledLinearGradient = styled(LinearGradient)<{ colors: string[] }>({
   width: '100%',
   height: '100%',
   flex: 1,
@@ -50,38 +56,33 @@ const StyledLinearGradient = styled(LinearGradient)({
 })
 
 const Welcome = ({ navigation }: { navigation: StackNavigationProp<any> }) => {
-  const theme : any = useTheme()
-  const gradientColors = {
-    top: theme.colors.flatPurple.dark,
-    bottom: theme.colors.flatMagenta.light,
-  }
-
+  const { colors } = useTheme() as Theme
   const { t } = useTranslation('welcome')
+
+  const navigateToCreatePin = () => navigation.push('CreatePin')
+
   return (
     <>
       <StyledLinearGradient
-        colors={Object.values(gradientColors)}>
+        colors={[
+          colors.flatPurple.dark, // Top
+          colors.flatMagenta.light, // Bottom
+        ]}
+      >
         <SafeArea>
-          <Logo
-            source={require('assets/logo.png')}
-            resizeMode="contain"
-          />
+          <Logo source={require('assets/logo.png')} resizeMode="contain" />
           <Heading>
-            <Text style={{ fontFamily: 'Montserrat-Bold' }}> {t('expo')} </Text>
-            <Text style={{ fontFamily: 'Montserrat-Regular' }}> {t('starter')} </Text>
+            <TextBold>{t('expo')}</TextBold>
+            <TextRegular>&nbsp;{t('starter')}</TextRegular>
           </Heading>
           <Subtitle>
-            {`${t('by')} `}
-            <Text style={{ fontFamily: 'Montserrat-Bold' }}>
-              {t('telosDreamStack')}
-            </Text>
+            {t('by')}&nbsp;
+            <TextBold>{t('telosDreamStack')}</TextBold>
           </Subtitle>
           <Slogan>{t('exploreAllTheFeaturesOfTelosDreamstack')}</Slogan>
           <BottomButton
             title={t('alrightLetsGo')}
-            onPress={() => {
-              navigation.push('CreatePin')
-            }}
+            onPress={navigateToCreatePin}
             disabled={false}
           />
         </SafeArea>

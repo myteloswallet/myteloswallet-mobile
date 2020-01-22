@@ -4,9 +4,8 @@ import React, {
   createContext,
   useCallback,
 } from 'react'
+import { SHA256 } from 'crypto-js'
 import { OneOrMoreChildren } from 'types'
-
-import { hashElement } from 'lib/crypto/hashing'
 
 interface PinSetupState {
   pin: string
@@ -33,7 +32,10 @@ const SET_PIN = 'SET_PIN'
 const SET_PIN_CONFIRMATION = 'SET_PIN_CONFIRMATION'
 const RESET = 'RESET'
 
-const reducer = (state = initialState, { type, payload }: { type: string, payload: any}) => {
+const reducer = (
+  state = initialState,
+  { type, payload }: { type: string; payload: any },
+) => {
   switch (type) {
     case LOADING_PIN_HASH:
       return {
@@ -97,7 +99,7 @@ export const usePinSetupActions = () => {
   const hashPin = useCallback(
     (pin: string) => {
       dispatch!({ type: LOADING_PIN_HASH })
-      const hash = hashElement(pin)
+      const hash = SHA256(pin)
       dispatch!({ type: PIN_HASH_LOADED, payload: { pinHash: hash } })
     },
     [dispatch],

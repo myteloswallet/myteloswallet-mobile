@@ -1,18 +1,11 @@
 import React from 'react'
 import { ActivityIndicator } from 'react-native'
-// @ts-ignore
-import styled from '@emotion/native'
-
-const LoadingView = styled.View({
-  flex: 1,
-  alignItems: 'center',
-  justifyContent: 'center',
-})
+import CenteredContainer from 'components/CenteredContainer'
 
 export default function Loading() {
   return (
-    <LoadingView>
+    <CenteredContainer>
       <ActivityIndicator size="large" />
-    </LoadingView>
+    </CenteredContainer>
   )
 }
