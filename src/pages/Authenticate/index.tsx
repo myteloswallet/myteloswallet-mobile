@@ -1,63 +1,30 @@
 import React, { useState } from 'react'
-import {
-  KeyboardAvoidingView,
-  ActivityIndicator,
-  Text,
-  StyleSheet,
-  TextInput,
-} from 'react-native'
 import { useTranslation } from 'react-i18next'
-
-import colors from 'theme/colors'
+import styled from '@emotion/native'
+import { useTheme } from '@emotion/react'
 
 import useRegisterForPushNotifications from 'hooks/useRegisterForPushNotifications'
+
 import Separator from 'components/Separator'
 import BottomButton from 'components/BottomButton'
-import { SingleChildOrString } from 'types'
+import Caption from 'components/Caption'
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    width: '100%',
-    padding: 20,
-  },
-  caption: {
-    fontFamily: 'Montserrat-Regular',
-    color: colors.flatBlack.light,
-  },
-  textField: {
-    color: colors.flatBlack.dark,
-    backgroundColor: colors.flatWhite.light,
-    width: '100%',
-    height: 50,
-    fontFamily: 'Montserrat-Regular',
-    paddingHorizontal: 20,
-  },
+import PrivateKeyActivityIndicator from './PrivateKeyActivityIndicator'
+import PrivateKeyMessage from './PrivateKeyMessage'
+import PrivateKeyInput from './PrivateKeyInput'
+
+import { Theme } from 'theme/types'
+
+const ContainerView = styled.KeyboardAvoidingView({
+  flex: 1,
+  width: '100%',
+  padding: 20,
 })
 
-const PrivateKeyCopy = ({ children }: SingleChildOrString) => {
-  return <Text style={styles.caption}>{children}</Text>
-}
-
-const PrivateKeyActivityIndicator = () => {
-  return (
-    <>
-      <Separator marginVertical={5} />
-      <ActivityIndicator size="large" />
-    </>
-  )
-}
-
-const PrivateKeyMessage = ({ children }: SingleChildOrString) => {
-  return (
-    <>
-      <Separator marginVertical={5} />
-      <Text>{children}</Text>
-    </>
-  )
-}
-
 const Authenticate = () => {
+  const {
+    colors: { flatWhite },
+  } = useTheme() as Theme
   const [privateKey, setPrivateKey] = useState('')
   const [
     register,
@@ -79,29 +46,28 @@ const Authenticate = () => {
   }
 
   const PrivateKeyTextInput = (
-    <TextInput
+    <PrivateKeyInput
       editable={!isRegistering}
       placeholder={t('pastePrivateKeyHere')}
-      placeholderTextColor={colors.flatWhite.dark}
-      style={styles.textField}
+      placeholderTextColor={flatWhite.dark}
       onChangeText={privateKeyInputHandler}
     />
   )
 
   return (
     <>
-      <KeyboardAvoidingView style={styles.container} behavior="padding" enabled>
-        <Text style={styles.caption}>{t('privateKey')}</Text>
+      <ContainerView behavior="padding" enabled>
+        <Caption>{t('privateKey')}</Caption>
         <Separator marginVertical={20} />
         {PrivateKeyTextInput}
         <Separator marginVertical={20} />
-        <PrivateKeyCopy>{t('youCanImportYourTELOSAccount')}</PrivateKeyCopy>
+        <Caption>{t('youCanImportYourTELOSAccount')}</Caption>
         <Separator marginVertical={5} />
         {isRegistering && <PrivateKeyActivityIndicator />}
         {registerError && (
           <PrivateKeyMessage>{registerError.message}</PrivateKeyMessage>
         )}
-      </KeyboardAvoidingView>
+      </ContainerView>
       <BottomButton
         title={t('continue')}
         onPress={handleContinueButtonPress}

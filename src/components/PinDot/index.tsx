@@ -1,34 +1,21 @@
-import React from 'react'
-import { StyleSheet, View } from 'react-native'
-import PropTypes from 'prop-types'
-import colors from 'theme/colors'
+import styled from '@emotion/native'
+import { EmotionComponentProps } from 'types'
 
-const styles = StyleSheet.create({
-  dotStyle: {
+interface PinDotProps extends EmotionComponentProps {
+  active: boolean
+}
+
+const PinDot = styled.View<PinDotProps>(
+  {
     width: 16,
     height: 16,
     borderRadius: 16,
   },
-})
-
-const dotColors = {
-  active: colors.flatPurple.light,
-  inactive: colors.flatWhite.dark,
-}
-
-const PinDot: React.FC<{ active: boolean }> = ({ active = false }) => {
-  return (
-    <View
-      style={{
-        ...styles.dotStyle,
-        backgroundColor: active ? dotColors.active : dotColors.inactive,
-      }}
-    />
-  )
-}
-
-PinDot.propTypes = {
-  active: PropTypes.bool.isRequired,
-}
+  ({ active, theme }) => ({
+    backgroundColor: active
+      ? theme.colors.flatPurple.light
+      : theme.colors.flatWhite.dark,
+  }),
+)
 
 export default PinDot

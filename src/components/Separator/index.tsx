@@ -1,17 +1,12 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { View } from 'react-native'
+import { EmotionComponentProps } from 'types'
+import styled from '@emotion/native'
 
-interface SeparatorProps {
+interface SeparatorProps extends EmotionComponentProps {
   marginVertical: number
 }
 
-const Separator: React.FC<SeparatorProps> = ({ marginVertical = 5 }) => {
-  return <View style={{ marginVertical }} />
-}
-
-Separator.propTypes = {
-  marginVertical: PropTypes.number.isRequired,
-}
+const Separator = styled.View<SeparatorProps>({}, ({ marginVertical }) => ({
+  marginVertical: marginVertical,
+}))
 
 export default Separator

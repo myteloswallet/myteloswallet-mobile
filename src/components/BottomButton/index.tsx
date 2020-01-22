@@ -1,30 +1,8 @@
 import React from 'react'
-import {
-  TouchableOpacity,
-  Text,
-  StyleSheet,
-  GestureResponderEvent,
-} from 'react-native'
+import { GestureResponderEvent } from 'react-native'
 import PropTypes from 'prop-types'
-import colors from 'theme/colors'
-
-const styles = StyleSheet.create({
-  touchableStyle: {
-    position: 'absolute',
-    bottom: 0,
-    height: 64,
-    width: '101%',
-    flex: 1,
-    alignContent: 'center',
-    justifyContent: 'center',
-  },
-  textStyle: {
-    textAlign: 'center',
-    fontFamily: 'Montserrat-Regular',
-    color: colors.flatWhite.light,
-    textTransform: 'uppercase'
-  },
-})
+import { BottomButtonTouchableOpacity } from './BottomButtonTouchableOpacity'
+import { BottomButtonText } from './BottomButtonText'
 
 interface BottomButtonProps {
   title?: string
@@ -38,18 +16,13 @@ const BottomButton: React.FC<BottomButtonProps> = ({
   disabled = false,
 }) => {
   return (
-    <TouchableOpacity
+    <BottomButtonTouchableOpacity
       disabled={disabled}
-      style={{
-        ...styles.touchableStyle,
-        backgroundColor: disabled
-          ? colors.flatWhite.dark
-          : colors.flatBlack.dark,
-      }}
+      greyedOut={disabled}
       onPress={onPress}
     >
-      <Text style={styles.textStyle}>{title}</Text>
-    </TouchableOpacity>
+      <BottomButtonText>{title}</BottomButtonText>
+    </BottomButtonTouchableOpacity>
   )
 }
 

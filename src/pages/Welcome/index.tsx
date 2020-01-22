@@ -1,88 +1,92 @@
 import React from 'react'
-import { StyleSheet, Text, Image, SafeAreaView } from 'react-native'
 import { LinearGradient } from 'expo-linear-gradient'
 import { useTranslation } from 'react-i18next'
+import styled from '@emotion/native'
+import { useTheme } from '@emotion/react'
 
-import colors from 'theme/colors'
 import BottomButton from 'components/BottomButton'
 import { StackNavigationProp } from '@react-navigation/stack'
+import { Theme } from 'theme/types'
+import TextBold from 'components/TextBold'
+import TextRegular from 'components/TextRegular'
+import { EmotionComponentProps } from 'types'
 
-const gradientColors = {
-  top: colors.flatPurple.dark,
-  bottom: colors.flatMagenta.light,
-}
+const SafeArea = styled.SafeAreaView({
+  flex: 1,
+  alignItems: 'center',
+  justifyContent: 'center',
+})
 
-const styles = StyleSheet.create({
-  containerStyle: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  gradientStyle: {
-    width: '100%',
-    height: '100%',
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  logoStyle: {
-    width: 150,
-    height: 150,
-    padding: 20,
-  },
-  heading: {
-    fontSize: 32,
-    color: '#fff',
-    marginTop: 16,
-  },
-  subtitle: {
-    color: '#fff',
-    fontSize: 16,
-    marginTop: 8,
-  },
-  slogan: {
-    fontFamily: 'Montserrat-Regular',
+const Logo = styled.Image({
+  width: 150,
+  height: 150,
+  padding: 20,
+})
+
+const Heading = styled.Text({
+  fontSize: 32,
+  color: '#fff',
+  marginTop: 16,
+})
+
+const Subtitle = styled.Text({
+  color: '#fff',
+  fontSize: 16,
+  marginTop: 8,
+})
+
+const Slogan = styled.Text<EmotionComponentProps>(
+  {
     textAlign: 'center',
     fontSize: 16,
     color: '#fff',
     marginTop: 48,
   },
+  ({ theme }) => ({
+    fontFamily: theme.fonts.sansSerif.regular,
+  }),
+)
+
+const StyledLinearGradient = styled(LinearGradient)<{ colors: string[] }>({
+  width: '100%',
+  height: '100%',
+  flex: 1,
+  alignItems: 'center',
+  justifyContent: 'center',
 })
 
 const Welcome = ({ navigation }: { navigation: StackNavigationProp<any> }) => {
+  const { colors } = useTheme() as Theme
   const { t } = useTranslation('welcome')
+
+  const navigateToCreatePin = () => navigation.push('CreatePin')
+
   return (
     <>
-      <LinearGradient
-        colors={Object.values(gradientColors)}
-        style={styles.gradientStyle}
+      <StyledLinearGradient
+        colors={[
+          colors.flatPurple.dark, // Top
+          colors.flatMagenta.light, // Bottom
+        ]}
       >
-        <SafeAreaView style={styles.containerStyle}>
-          <Image
-            source={require('assets/logo.png')}
-            resizeMode="contain"
-            style={styles.logoStyle}
-          />
-          <Text style={styles.heading}>
-            <Text style={{ fontFamily: 'Montserrat-Bold' }}> {t('expo')} </Text>
-            <Text style={{ fontFamily: 'Montserrat-Regular' }}> {t('starter')} </Text>
-          </Text>
-          <Text style={styles.subtitle}>
-            {`${t('by')} `}
-            <Text style={{ fontFamily: 'Montserrat-Bold' }}>
-              {t('telosDreamStack')}
-            </Text>
-          </Text>
-          <Text style={styles.slogan}>{t('exploreAllTheFeaturesOfTelosDreamstack')}</Text>
+        <SafeArea>
+          <Logo source={require('assets/logo.png')} resizeMode="contain" />
+          <Heading>
+            <TextBold>{t('expo')}</TextBold>
+            <TextRegular>&nbsp;{t('starter')}</TextRegular>
+          </Heading>
+          <Subtitle>
+            {t('by')}&nbsp;
+            <TextBold>{t('telosDreamStack')}</TextBold>
+          </Subtitle>
+          <Slogan>{t('exploreAllTheFeaturesOfTelosDreamstack')}</Slogan>
           <BottomButton
             title={t('alrightLetsGo')}
-            onPress={() => {
-              navigation.push('CreatePin')
-            }}
+            onPress={navigateToCreatePin}
             disabled={false}
           />
-        </SafeAreaView>
-      </LinearGradient>
+        </SafeArea>
+      </StyledLinearGradient>
     </>
   )
 }
