@@ -6,7 +6,6 @@
   <a href="https://developers.blockmatic.io">
 		<img src="https://img.shields.io/badge/code%20style-blockmatic-brightgreen.svg" alt="Blockmatic Standard">
 	</a>
-	<img src="https://img.shields.io/dub/l/vibe-d.svg" alt="MIT" />
 	<a href="https://twitter.com/intent/follow?screen_name=telosdreamstack">
 		<img src="https://img.shields.io/twitter/follow/telosdreamstack.svg?style=social&logo=twitter" alt="Follow on Twitter" />
 	</a>
@@ -136,7 +135,7 @@ This project follows the [all-contributors](https://github.com/all-contributors/
 
 ## Blockmatic
 
-Blockmatic is building robust ecosystem of people and tools for development of decentralized applications.
+Blockmatic is building robust ecosystem of people and tools for development of blockchain applications.
 
 [blockmatic.io](https://blockmatic.io)
 
