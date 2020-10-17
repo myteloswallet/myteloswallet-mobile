@@ -1,16 +1,13 @@
 # DreamStack Mobile dApp Stater
 
-React Native dApp starter. 
+Jumpstart your TELOS ReactJS project. Focus on your project features, we already did the rest for you.
+
+The Telos DreamStack application starters provide a robust, performant and efficient architectural framework along with a rich set of tools for developers including: key management, wallet integration, real-time blockchain data subscriptions though GraphQL, internationalization, accessibility support, reactive async, automated pipelines and code quality checks.
 
 <p align="center">
 <img src="https://user-images.githubusercontent.com/6248571/70386194-53182b80-195c-11ea-9752-63a1866257fc.gif" height="400">
 </p>
 
-## TELOS
-
-Best in class C++ EOSIO protocol technology providing fast, scalable and eco-freindly blockchain augmented by a growing library of Telos services and innovations. Free accounts, work proposals, dapp grants, decentralized exchange, dstor, bancor protocol, telos community and foundation.
-
-[Learn more](https://docs.telosdreamstack.io/smart-contracts/telos-blockchain)
 
 ## React Native Expo
 
@@ -24,10 +21,6 @@ With Expo tools, services, and React, you can build, deploy, and quickly iterate
 
 read more [expo.io](https://expo.io)
 
-## Disclaimer
-
-This is a work in progress. Feel free to reach us out on telegram for clarifications.
-https://t.me/telosdreamstack
 
 ## Features
 
@@ -86,17 +79,16 @@ src
 
 ...
 
+## Disclaimer
+
+This is a work in progress. Join the telegram channel for more information.  
+https://t.me/telosdreamstack
+
 ## TELOS DreamStack
 
-This repository is part of the TELOS DreamStack Project which provides set of guidelines, tools and starters to speed up dApp development following best practices for security, performance and maintainability of your application.
+This repository is part of the TELOS DreamStack Project which provides a set of guidelines, tools and starters to speed up dApp development following best practices for security, performance and maintainability of your application.
 
-The code style convention aims to maximize reusability and facilitate collaboration. We have chosen the stack carefully so that it allows us to write robust and performant applications with more concise and readable code.
-
-## Contributing
-
-Read the [contributing guidelines](https://developers.blockmatic.io) for details.
-
-<!-- Please don't remove this: Grab your social icons from https://github.com/carlsednaoui/gitsocial -->
+https://telosdreamstack.io
 
 ## Contributors ✨
 
@@ -106,16 +98,28 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- prettier-ignore -->
 <table>
   <tr>
-    <td align="center"><a href="https://gaboesquivel.com"><img src="https://avatars0.githubusercontent.com/u/391270?v=4" width="100px;" alt="Gabo Esquivel"/><br /><sub><b>Gabo Esquivel</b></sub></a><br /><a href="https://github.com/blockmatic/telos-dapp-starter/commits?author=gaboesquivel" title="Code">💻</a> <a href="#ideas-gaboesquivel" title="Ideas, Planning, & Feedback">🤔</a> <a href="#review-gaboesquivel" title="Reviewed Pull Requests">👀</a></td>
-    <td align="center"><a href="http://kevinrodriguez.io/"><img src="https://avatars3.githubusercontent.com/u/6248571?v=4" width="100px;" alt="Kevin Rodríguez"/><br /><sub><b>Kevin Rodríguez</b></sub></a><br /><a href="https://github.com/blockmatic/telos-dapp-starter/commits?author=kevinrodriguez-io" title="Code">💻</a> <a href="#ideas-kevinrodriguez-io" title="Ideas, Planning, & Feedback">🤔</a> <a href="#review-kevinrodriguez-io" title="Reviewed Pull Requests">👀</a></td>
-    <td align="center"><a href="https://github.com/lalrg"><img src="https://avatars3.githubusercontent.com/u/9158083?v=4" width="100px;" alt="Luis Richmond"/><br /><sub><b>Luis Richmond</b></sub></a><br /><a href="https://github.com/blockmatic/telos-dapp-starter/commits?author=lalrg" title="Code">💻</a> <a href="#ideas-lalrg" title="Ideas, Planning, & Feedback">🤔</a> <a href="#review-lalrg" title="Reviewed Pull Requests">👀</a></td>
-    <td align="center"><a href="https://kevinwolf.me"><img src="https://avatars2.githubusercontent.com/u/3157426?v=4" width="100px;" alt="Kevin Wolf"/><br /><sub><b>Kevin Wolf</b></sub></a><br /><a href="#ideas-iamkevinwolf" title="Ideas, Planning, & Feedback">🤔</a></td>
+    <td align="center"><a href="https://gaboesquivel.com"><img src="https://avatars0.githubusercontent.com/u/391270?v=4" width="100px;" alt="Gabo Esquivel"/><br /><sub><b>Gabo Esquivel</b></sub></a><br /><a href="#ideas-gaboesquivel" title="Ideas, Planning, & Feedback">🤔</a> <a href="https://github.com/telosdreamstack/dreamstack-react/commits?author=gaboesquivel" title="Code">💻</a> <a href="#review-gaboesquivel" title="Reviewed Pull Requests">👀</a></td>
+    <td align="center"><a href="https://rfreites.now.sh/"><img src="https://avatars1.githubusercontent.com/u/16639855?v=4" width="100px;" alt="Ronny"/><br /><sub><b>Ronny</b></sub></a><br /><a href="#ideas-rfreites" title="Ideas, Planning, & Feedback">🤔</a> <a href="https://github.com/telosdreamstack/dreamstack-react/commits?author=rfreites" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/JeffBriCR"><img src="https://avatars2.githubusercontent.com/u/1731975?v=4" width="100px;" alt="Jeffrey Briceño"/><br /><sub><b>Jeffrey Briceño</b></sub></a><br /><a href="#ideas-JeffBriCR" title="Ideas, Planning, & Feedback">🤔</a> <a href="https://github.com/telosdreamstack/dreamstack-react/commits?author=JeffBriCR" title="Code">💻</a> <a href="#review-JeffBriCR" title="Reviewed Pull Requests">👀</a></td>
   </tr>
 </table>
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
+
+## Contributing
+
+[Contributing Guide](./CONTRIBUTING.md)
+
+[Code of Conduct](./CONTRIBUTING.md#conduct)
+
+
+## Important
+
+See [LICENSE](./LICENSE) for copyright and license terms.
+
+All repositories and other materials are provided subject to the terms of this [IMPORTANT](./IMPORTANT.md) notice and you must familiarize yourself with its terms. The notice contains important information, limitations and restrictions relating to our software, publications, trademarks, third-party resources, and forward-looking statements. By accessing any of our repositories and other materials, you accept and agree to the terms of the notice.
 
 ## Blockmatic
 
